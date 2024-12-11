@@ -32,7 +32,7 @@ class HeroesController (
     @PostMapping
     fun createHero(@Valid @RequestBody request: HeroRequest): ResponseEntity<HeroResponse> =
         repository.create(request.toHero())
-            .let { ResponseEntity.accepted().body(HeroResponse.from(it)) }
+            .let { ResponseEntity.created(URI.create("/heroes/${it.id}")).body(HeroResponse.from(it)) }
 
     @PutMapping("/{id}")
     fun updateHero(@PathVariable("id") id: Long, @Valid @RequestBody request: HeroRequest): ResponseEntity<HeroResponse> =

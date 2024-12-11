@@ -1,6 +1,5 @@
 package com.marcoscorrea.heroes.application.web.resources.dto.request
 
-import com.marcoscorrea.heroes.application.web.resources.dto.response.HeroResponse
 import com.marcoscorrea.heroes.domain.hero.Hero
 import jakarta.validation.constraints.NotBlank
 import jakarta.validation.constraints.NotEmpty
@@ -15,8 +14,8 @@ data class HeroRequest(
     @field:NotBlank
     @field:NotEmpty
     val person: String,
-    val description: String? = "",
-    val history: String? = ""
+    val description: String? = null,
+    val history: String? = null
 ) {
     fun toHero(id: Long? = null) = Hero(
         id = id,
